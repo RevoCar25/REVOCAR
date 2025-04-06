@@ -1,91 +1,53 @@
-// Revo Car - Proyecto Web
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { motion } from "framer-motion";
+{
+  "name": "revocar",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "framer-motion": "^10.12.16",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.0",
+    "vite": "^4.4.9"
+  }
+}
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-export default function RevoCarHome() {
-  return (
-    <div className="min-h-screen bg-gray-100 text-gray-800">
-      {/* Header */}
-      <header className="bg-white shadow p-4 flex justify-between items-center">
-        <img src="/logo.png" alt="Revo Car" className="h-12" />
-        <nav className="space-x-4">
-          <a href="#mision" className="hover:text-blue-600">Misión</a>
-          <a href="#vision" className="hover:text-blue-600">Visión</a>
-          <a href="#quienes" className="hover:text-blue-600">Quiénes Somos</a>
-          <a href="#comprar" className="hover:text-blue-600">Comprar</a>
-          <a href="#vender" className="hover:text-blue-600">Vender</a>
-          <a href="#login" className="hover:text-blue-600">Ingresar</a>
-        </nav>
-      </header>
+export default defineConfig({
+  plugins: [react()],
+  base: '/'
+})
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RevoCar</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import RevoCarHome from './App.jsx'
+import './index.css'
 
-      {/* Secciones */}
-      <main className="p-6 space-y-12">
-        <section id="mision" className="text-center">
-          <h2 className="text-2xl font-bold mb-2">Misión</h2>
-          <p>Ser la opción confiable en la venta de autos, destacando por honestidad y seguridad.</p>
-        </section>
-
-        <section id="vision" className="text-center">
-          <h2 className="text-2xl font-bold mb-2">Visión</h2>
-          <p>Ofrecemos una compra segura y transparente de autos, evitando fraudes y malas prácticas.</p>
-        </section>
-
-        <section id="quienes" className="text-center">
-          <h2 className="text-2xl font-bold mb-2">Quiénes Somos</h2>
-          <p>Somos un grupo de jóvenes comprometidos en transformar la compra y venta de vehículos.</p>
-        </section>
-
-        {/* Comprar autos */}
-        <section id="comprar">
-          <h2 className="text-xl font-bold mb-4">Explora autos disponibles</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Placeholder de ejemplo */}
-            {[1, 2, 3].map((car) => (
-              <Card key={car}>
-                <CardContent className="p-4">
-                  <img src="https://via.placeholder.com/300x200" alt="Carro" className="mb-2 rounded" />
-                  <p className="font-semibold">Auto Modelo {car}</p>
-                  <p>$100,000 MXN</p>
-                  <Button className="mt-2 w-full">Ver detalles</Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        {/* Vender autos */}
-        <section id="vender" className="bg-white p-6 rounded shadow">
-          <h2 className="text-xl font-bold mb-4">Publica tu auto</h2>
-          <form action="https://formsubmit.co/alejandrolemus2240@gmail.com" method="POST" encType="multipart/form-data" className="space-y-4">
-            <Input name="nombre" placeholder="Tu nombre" required />
-            <Input name="telefono" placeholder="Número de teléfono" required />
-            <Input name="marca_modelo" placeholder="Marca y modelo del auto" required />
-            <Input name="precio" placeholder="Precio" required />
-            <Textarea name="descripcion" placeholder="Descripción del auto" required />
-            <Input type="file" name="foto" accept="image/*" required />
-            <Button type="submit">Enviar para aprobación</Button>
-            <input type="hidden" name="_captcha" value="false" />
-          </form>
-        </section>
-
-        {/* Registro/Login */}
-        <section id="login" className="bg-white p-6 rounded shadow">
-          <h2 className="text-xl font-bold mb-4">Ingresa con tu número de teléfono</h2>
-          <form className="space-y-4">
-            <Input placeholder="Número de teléfono" type="tel" required />
-            <Button type="submit">Entrar</Button>
-          </form>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="text-center text-sm p-4 text-gray-500">
-        © 2025 Revo Car. Todos los derechos reservados.
-      </footer>
-    </div>            
-  );
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <RevoCarHome />
+  </React.StrictMode>
+)
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f3f4f6;
 }
