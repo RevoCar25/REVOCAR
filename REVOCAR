@@ -165,3 +165,8 @@ node_modules
 *.log
 npm install
 npm run dev
+export default defineConfig({
+  plugins: [react()],
+  base: '/revocar/', //
+}
+
